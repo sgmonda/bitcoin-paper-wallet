@@ -15,7 +15,6 @@ const NAME_POSITION_CENTER = [2150, 790]
 const OPTIONS = stdio.getopt({
   name: {key: 'n', description: 'Name for your wallet. This name is printed on it.', args: 1},
 });
-console.log('OPTIONS', OPTIONS);
 
 function writeFile (path, data, encoding) {
   return new Promise((resolve, reject) => {

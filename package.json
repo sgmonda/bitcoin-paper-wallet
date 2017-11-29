@@ -1,0 +1,22 @@
+{
+  "name": "bitcoin-paper-wallet",
+  "version": "1.0.0",
+  "description": "Paper wallet generator for bitcoin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bitcoin",
+    "wallet",
+    "paper",
+    "offline",
+    "money"
+  ],
+  "author": "Sergio García Mondaray <sgmonda@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.0.0-alpha.6",
+    "qrcode": "^1.0.0"
+  }
+}

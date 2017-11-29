@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.0.0-alpha.6",
-    "qrcode": "^1.0.0"
+    "qrcode": "^1.0.0",
+    "stdio": "^0.2.7"
   }
 }

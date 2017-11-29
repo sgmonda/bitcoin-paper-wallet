@@ -1,6 +1,7 @@
 const bitcoin = require('bitcoinjs-lib');
 const qrcode = require('qrcode')
 const fs = require('fs');
+const stdio = require('stdio');
 const { createCanvas, loadImage, Image } = require('canvas')
 
 const PRIVATE_QR_POSITION = [400, 250];
@@ -9,6 +10,12 @@ const PRIVATE_KEY_POSITION = [200, 800];
 const PUBLIC_KEY_POSITION = [4400, 800];
 const KEY_FONT_SIZE = 60;
 const QR_SIZE = 500;
+const NAME_POSITION_CENTER = [2150, 790]
+
+const OPTIONS = stdio.getopt({
+  name: {key: 'n', description: 'Name for your wallet. This name is printed on it.', args: 1},
+});
+console.log('OPTIONS', OPTIONS);
 
 function writeFile (path, data, encoding) {
   return new Promise((resolve, reject) => {
@@ -61,13 +68,18 @@ async function run () {
   ctx.fillText(public.key.substring(0, middle), PUBLIC_KEY_POSITION[0], PUBLIC_KEY_POSITION[1]);
   ctx.fillText(public.key.substring(middle), PUBLIC_KEY_POSITION[0], PUBLIC_KEY_POSITION[1] + KEY_FONT_SIZE);
 
+  if (OPTIONS.name) {
+    const length = OPTIONS.name.length;
+    width = KEY_FONT_SIZE * length;
+    ctx.fillText(OPTIONS.name, NAME_POSITION_CENTER[0] - width / 2, NAME_POSITION_CENTER[1] - KEY_FONT_SIZE / 2);
+  }
+
   fs.mkdirSync(dir);
   fs.writeFileSync(`${dir}/public.txt`, public.key);
   fs.writeFileSync(`${dir}/private.txt`, private.key);
 
   var base64Data = canvas.toDataURL().replace(/^data:image\/png;base64,/, "");
   await writeFile (`${dir}/wallet.png`, base64Data, 'base64');
-
   console.log(`Wallet created: ${dir}`)
 }
 

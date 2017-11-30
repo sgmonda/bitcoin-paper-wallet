@@ -5,7 +5,7 @@ Simplest bitcoin paper wallet generator
 ### How-to
 
 ```
-$ npm start
+$ node index.js
 ```
 
 ### Result

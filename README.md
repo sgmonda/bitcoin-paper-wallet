@@ -1,6 +1,6 @@
 # bitcoin-paper-wallet
 
-Simplest bitcoin paper wallet creator
+Simplest bitcoin paper wallet generator
 
 Outside             |  Inside
 :-------------------------:|:-------------------------:
